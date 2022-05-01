@@ -47,6 +47,7 @@ class UsersRepository implements IUsersRepository {
     }
 
     user.admin = true;
+    user.updated_at = new Date();
 
     return user;
   }
