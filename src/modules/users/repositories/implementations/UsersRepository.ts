@@ -39,12 +39,8 @@ class UsersRepository implements IUsersRepository {
     return this.users.find(u => u.email === email);
   }
 
-  turnAdmin(receivedUser: User | undefined): User {
-    const user = this.users.find(u => u.id === receivedUser?.id);
-
-    if (!user) {
-      throw new Error('User not found');
-    }
+  turnAdmin(receivedUser: User): User {
+    const user = this.users.find(u => u.id === receivedUser.id);
 
     user.admin = true;
     user.updated_at = new Date();

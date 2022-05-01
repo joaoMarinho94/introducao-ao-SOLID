@@ -11,10 +11,14 @@ class TurnUserAdminController {
     try {
       const user = this.turnUserAdminUseCase.execute({ user_id });
 
-      return response.json({ user });
+      return response.json({
+        name: user.name,
+        email: user.email,
+        admin: user.admin,
+      });
     } catch (error) {
-      return response.status(400).send({
-        message: error.message || 'Unexpected error.',
+      return response.status(404).send({
+        error: error.message || 'Unexpected error.',
       });
     }
   }
