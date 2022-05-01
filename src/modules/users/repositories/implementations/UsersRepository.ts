@@ -39,14 +39,20 @@ class UsersRepository implements IUsersRepository {
     return this.users.find(u => u.id === email);
   }
 
-  turnAdmin(receivedUser: User): User {
-    // Complete aqui
+  turnAdmin(receivedUser: User | undefined): User {
+    const user = this.users.find(u => u.id === receivedUser?.id);
+
+    if (!user) {
+      throw new Error('User not found');
+    }
+
+    user.admin = true;
+
+    return user;
   }
 
   list(): User[] {
-    const { users } = this;
-
-    return users;
+    return this.users;
   }
 }
 
