@@ -44,7 +44,9 @@ class UsersRepository implements IUsersRepository {
   }
 
   list(): User[] {
-    // Complete aqui
+    const { users } = this;
+
+    return users;
   }
 }
 
