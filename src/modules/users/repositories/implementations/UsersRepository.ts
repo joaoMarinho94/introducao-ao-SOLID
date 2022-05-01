@@ -36,7 +36,7 @@ class UsersRepository implements IUsersRepository {
   }
 
   findByEmail(email: string): User | undefined {
-    return this.users.find(u => u.id === email);
+    return this.users.find(u => u.email === email);
   }
 
   turnAdmin(receivedUser: User | undefined): User {
